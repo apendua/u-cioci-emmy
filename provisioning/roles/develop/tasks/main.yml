@@ -55,4 +55,3 @@
   with_items:
     - syncdb
     - migrate
-    - collectstatic
