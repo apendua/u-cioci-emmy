@@ -121,6 +121,19 @@ STATICFILES_DIRS = (
 
 DEFAULT_FILE_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
 
+
+GAME_CONFIG = {
+    ('easy', '1'): {
+        'number_of_extra': 3,
+        'number_to_buy': 1,
+    },
+    ('easy', '2'): {
+        'number_of_extra': 3,
+        'number_to_buy': 2,
+    },
+}
+
+
 try:
     from local_settings import *
 except ImportError:

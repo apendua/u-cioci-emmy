@@ -22,9 +22,9 @@ var ractive = new Ractive({
             { name: 'papryka' }
         ],
         itemsInShop: [
-            { name: 'jabłko' },
-            { name: 'banan' },
-            { name: 'papryka' }
+            { name: 'jabłko', price: 1 },
+            { name: 'banan', price: 2 },
+            { name: 'papryka', price: 3 }
         ],
         itemsInCart: [
         ]
@@ -46,3 +46,24 @@ shopChannel.subscribe({
         ractive.set('itemsInCart.' + data.index + '.removed', true);
     },
 });
+
+// Audio queue TEST!!! :D
+//var AudioQueue = require('./services/audioQueue');
+//
+//function log(what) {
+//    return function() {
+//        console.log('Done', what, '!');
+//    };
+//}
+//
+//var queue = new AudioQueue([
+//    { url: 'http://uciociemmy.s3.amazonaws.com/audio/banan.mp3', onStart: log('Banan'), onFinish: log('Banan end') },
+//    { url: 'http://uciociemmy.s3.amazonaws.com/audio/woda.mp3', onStart: log('Woda'), onFinish: log('Woda end') },
+//    { url: 'http://uciociemmy.s3.amazonaws.com/audio/ciastka.mp3', onStart: log('Ciastka'), onFinish: log('Ciastka end') },
+//    { url: 'http://uciociemmy.s3.amazonaws.com/audio/banan.mp3', onStart: log('Banan 3'), onFinish: log('Banan 3 end') },
+//    { url: 'http://uciociemmy.s3.amazonaws.com/audio/banan.mp3', onStart: log('Banan 4'), onFinish: log('Banan 4 end') },
+//], 500);
+//
+//setTimeout(function() {
+//    queue.start();
+//}, 1000);
