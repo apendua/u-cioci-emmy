@@ -1,6 +1,5 @@
 <div class="shop_item {{#if available <= 0}}shop_item_out_of_stock{{/if}}">
-    <div class="shop_item_icon" on-click="addItem">
-        <img src="{{photo}}" alt="item"/>
+    <div class="shop_item_icon" on-click="addItem" style="background-image:url({{photo}})">
     </div>
     <div class="shop_item_title">
         {{name}}, available: {{available}}
