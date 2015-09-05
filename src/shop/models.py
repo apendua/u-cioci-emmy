@@ -23,5 +23,12 @@ class Item(models.Model):
     get_photo_img.short_description = "Photo thumbnail"
     get_photo_img.allow_tags = True
 
+    def get_audio(self):
+        if self.icon:
+            return "<audio src='%s' controls>Your browser does not support audio play</audio>" % self.audio.url
+        return "No audio available"
+    get_audio.short_description = "Audio play"
+    get_audio.allow_tags = True
+
     def __unicode__(self):
         return self.name
