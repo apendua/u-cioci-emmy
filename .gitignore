@@ -73,6 +73,8 @@ local_settings.py
 
 ### Vagrant ###
 .vagrant/
+npm-debug.log
+.DS_Store
 
 
 ### SublimeText ###
