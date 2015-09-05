@@ -2,5 +2,9 @@
  * That's bootstrap of your application
  */
 
-var ractive = require('ractive');
-console.log('Hello here!');
+var Ractive = require('ractive');
+
+var ractive = new Ractive({
+    el: document.getElementById('app'),
+    template: require('../templates/app.html')
+});
