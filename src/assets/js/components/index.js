@@ -10,6 +10,7 @@ require('./shoppingCart');
 require('./shoppingCartItem');
 require('./shoppingList');
 require('./shoppingListItem');
+require('./shoppingListItemWord');
 require('./checkoutButton');
 
 // General
