@@ -13,6 +13,8 @@ var gameChannel = postal.channel('game');
 
 window.postal = postal;
 
+require('./config/audio');
+
 var ractive = new Ractive({
     el: document.getElementById('app'),
     template: require('./app.html'),
@@ -67,9 +69,76 @@ gameChannel.subscribe({
     }
 });
 
-// Audio queue TEST!!! :D
-//var AudioQueue = require('./services/audioQueue');
+var AudioQueue = require('./services/audioQueue');
+
+var interfaceAudio = null;
+
+// Mouse hover events
+document.body.addEventListener('mouseover', function(e) {
+    if (e.target.hasAttribute('data-audio')) {
+        if (interfaceAudio) {
+            interfaceAudio.stop();
+        }
+
+        interfaceAudio = AudioQueue.simpleAudio(e.target.getAttribute('data-audio'), function() {
+            interfaceAudio = null;
+        });
+    }
+}, false);
+
+document.body.addEventListener('mouseout', function(e) {
+    if (e.target.hasAttribute('data-audio')) {
+        if (interfaceAudio) {
+            interfaceAudio.stop();
+        }
+
+        interfaceAudio = null;
+    }
+}, false);
+
+// Mobile events
+var REQUIRED_TAP_TIME = 500;
+
+var tappedElement = null,
+    tapTimeout = null;
+
+document.body.addEventListener('touchstart', function(e) {
+    tappedElement = e.target;
+
+    clearTimeout(tapTimeout);
+
+    if (e.target.hasAttribute('data-audio')) {
+        tapTimeout = setTimeout(function() {
+            if (interfaceAudio) {
+                interfaceAudio.stop();
+            }
+
+            interfaceAudio = AudioQueue.simpleAudio(e.target.getAttribute('data-audio'), function() {
+                interfaceAudio = null;
+            });
+        }, REQUIRED_TAP_TIME);
+    }
+}, false);
+
+document.body.addEventListener('touchend', function() {
+    clearTimeout(tapTimeout);
+    tappedElement = null;
+
+    if (interfaceAudio) {
+        interfaceAudio.stop();
+    }
+}, false);
+
+
+//var a = Ractive.defaults.data.audio;
 //
+//new AudioQueue([
+//    a['2'],
+//    a.MORE_PIECES,
+//    a.BANANA
+//]).start();
+
+// Audio queue TEST!!! :D
 //function log(what) {
 //    return function() {
 //        console.log('Done', what, '!');

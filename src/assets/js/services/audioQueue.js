@@ -36,6 +36,10 @@
             return this.stop();
         }
 
+        if (typeof next === 'string') {
+            next = { url: next };
+        }
+
         this.currentTrack = next;
         this.audioElement = document.createElement('audio');
         this.audioElement.setAttribute('autoplay', 'autoplay');
@@ -61,6 +65,10 @@
         };
         this.audioElement.addEventListener('play', onPlay);
 
+        this.audioElement.addEventListener('error', function() {
+            self.playNext();
+        });
+
         this.audioElement.addEventListener('ended', function() {
             if (self.currentTrack.onFinish) {
                 self.currentTrack.onFinish();
@@ -83,6 +91,14 @@
             this.audioElement.parentNode && this.audioElement.parentNode.removeChild(this.audioElement);
             this.audioElement = null;
         }
+    };
+
+    AudioQueue.simpleAudio = function(url, onFinish) {
+        var queue = new AudioQueue([ { url: url, onFinish: onFinish } ]);
+
+        queue.start();
+
+        return queue;
     };
 
     module.exports = AudioQueue;
