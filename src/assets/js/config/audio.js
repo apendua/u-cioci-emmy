@@ -8,13 +8,13 @@ function audio(audio) {
     return 'http://uciociemmy.s3.amazonaws.com/static_audio/' + audio;
 }
 
-Ractive.defaults.data.audio = {
+module.exports = Ractive.defaults.data.audio = {
     REMOVE_FROM_CART: audio('usun_z_koszyka.mp3'),
     ADD_TO_CART: audio('dodaj_do_koszyka.mp3'),
     CART: audio('koszyk.mp3'),
     BUY: audio('kup.mp3'),
     SHOPPING_LIST: audio('lista_zakupow.mp3'),
-    GAME_EXPLANATION: audio('wyjasnienie_gry.mp3'),
+    INTRODUCTION: audio('wyjasnienie_gry.mp3'),
     SHELVES: audio('polki_sklepowe.mp3'),
     ONE_PIECE: audio('raz.mp3'),
     MORE_PIECES: audio('razy.mp3'),

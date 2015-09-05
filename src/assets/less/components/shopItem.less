@@ -62,14 +62,57 @@
 .shop_item_price {
     position: absolute;
     height: 60px;
-    width: 60px;
+    min-width: 100px;
     color: #fff;
     top: -10px;
-    border-radius: 50%;
+    border-radius: 0;
     line-height: 60px;
-    font-size: 40px;
-    background-color: #C77171;
+    font-size: 30px;
+    background-color: #E43F3F;
     right: -10px;
+    overflow: hidden;
+    transform: rotate(0deg);
+
+    &:before, &:after {
+        content: '';
+        display: block;
+        width: 20px;
+        height: 20px;
+        background: #fff;
+        border-radius: 50%;
+        position: absolute;
+        left: -10px;
+        top: -10px;
+    }
+
+    &:before {
+        box-shadow: 0 0 20px 50px rgba(191, 44, 44, 0.9);
+        z-index: -1;
+    }
+
+    &:after {
+        left: auto;
+        right: -10px;
+    }
+
+    span {
+        &:before, &:after {
+            content: '';
+            display: block;
+            width: 20px;
+            height: 20px;
+            background: #fff;
+            border-radius: 50%;
+            position: absolute;
+            left: -10px;
+            bottom: -10px;
+        }
+
+        &:after {
+            left: auto;
+            right: -10px;
+        }
+    }
 }
 
 .shop_item_title {
