@@ -1,8 +1,13 @@
-<div class="dialog {{ opened ? 'open' : 'close' }}">
+<div class="result-screen dialog {{ opened ? 'open' : 'close' }}">
     <div class="overlay"></div>
     <div class="content">
         <loader visible="{{ loading }}" />
+        {{#if victory}}
         <h2>Brawo, ciocia Emma jest z Ciebie zadowolona!</h2>
+        {{/if}}
+        {{#if !victory}}
+        <h2>Całkiem nieźle, ale postaraj się lepiej!</h2>
+        {{/if}}
         <a href="#" on-click="replay">Powtórz poziom</a>
         lub
         <a href="#" on-click="selectLevel">Wybierz inny</a>

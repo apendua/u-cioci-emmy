@@ -54,9 +54,10 @@ Ractive.components.resultScreen = Ractive.extend({
         postal.subscribe({
             channel: 'game',
             topic: 'result',
-            callback: function() {
+            callback: function(victory) {
                 self.set('loading', false);
                 self.set('opened', true);
+                self.set('victory', victory);
                 self.playCongratulations();
             }
         });
