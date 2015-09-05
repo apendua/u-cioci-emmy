@@ -4,12 +4,12 @@
         <img src="/assets/images/cart.png">
     </div>
 
-    {{#each items:index}}
+    {{#each itemsInCart:index}}
         <shoppingCartItem index={{index}}></shoppingCartItem>
     {{/each}}
 
 
     <div>
-        Total Cost: {{totalPrice()}}
+        Total Cost: {{totalPrice}}
     </div>
 </div>
