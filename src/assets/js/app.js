@@ -3,11 +3,13 @@
  */
 
 require('./components');
+require('./game');
 
 var Ractive = require('ractive');
 var postal = require('postal.js');
 var _ = require('lodash');
 var shopChannel = postal.channel('shop');
+var gameChannel = postal.channel('game');
 
 window.postal = postal;
 
@@ -45,6 +47,14 @@ shopChannel.subscribe({
         // ractive.splice('itemsInCart', data.index, 1);
         ractive.set('itemsInCart.' + data.index + '.removed', true);
     },
+});
+
+gameChannel.subscribe({
+    topic: 'start',
+    callback: function (data) {
+        ractive.set('itemsToBuy', data.shopping_list);
+        ractive.set('itemsInShop', data.available_items);
+    }
 });
 
 // Audio queue TEST!!! :D
