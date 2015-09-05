@@ -4,5 +4,5 @@ from shop.views import HomeView
 
 urlpatterns = [
     url(r'^$', HomeView.as_view(), name='home'),
-    url(r'^game/(?P<difficulty>\w+)/(?P<level>\d+)/$', GameView.as_view(), name='game'),
+    url(r'^game/(?P<difficulty>\w+)/(?P<level>\d+)?/?$', GameView.as_view(), name='game'),
 ]
