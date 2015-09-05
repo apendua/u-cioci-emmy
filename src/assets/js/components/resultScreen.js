@@ -57,7 +57,7 @@ Ractive.components.resultScreen = Ractive.extend({
             callback: function(victory) {
                 self.set('loading', false);
                 self.set('opened', true);
-                self.set('victory', victory);
+                self.set('victory', victory.victory);
                 self.playCongratulations();
             }
         });
