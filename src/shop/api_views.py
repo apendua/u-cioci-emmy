@@ -56,6 +56,7 @@ class GameView(APIView):
 
         return {
             'budget': budget,
+            'items_count_limit': settings.ITEMS_COUNT_LIMIT,
             'scenario': self.scenario,
             'shopping_list': serialized_shopping_list.data,
             'available_items': serialized_available_items.data,
