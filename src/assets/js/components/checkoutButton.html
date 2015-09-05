@@ -1,1 +1,3 @@
-<button class="checkout_button" on-click="buy">Kupuję</button>
+<button class="checkout_button {{#if notEnoughMoney}}not_enough_money{{/if}}" on-click="buy">
+    {{totalPrice}},-
+</button>

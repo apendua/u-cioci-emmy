@@ -37,6 +37,10 @@ ractive.observe('itemsInCart', function (items) {
     var itemsCount = {};
     var totalPrice = 0;
     var goalReached = false;
+    
+    items = _.filter(items, function (i) {
+        return !i.removed;
+    });
 
     _.each(items, function (i) {
         totalPrice += i.price;
