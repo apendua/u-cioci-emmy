@@ -2,9 +2,12 @@
 
     <button class="toggle_list"></button>
 
+    <readListButton items="{{itemsToBuy}}"/>
+
     {{#each itemsToBuy}}
     <shoppingListItem></shoppingListItem>
     {{/each}}
+
     <div class="shopping_list_budget">
         {{budget}}
     </div>
