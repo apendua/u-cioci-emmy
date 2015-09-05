@@ -9,7 +9,8 @@ Ractive.components.shoppingCartItem = Ractive.extend({
             channel.publish({
                 topic: 'cart.removeItem',
                 data: {
-                    index: this.get('index')
+                    index: this.get('index'),
+                    id: this.get('id'),
                 }
             });
         });
