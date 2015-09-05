@@ -1,0 +1,9 @@
+<div class="levels-wrapper">
+    <ul class="levels">
+        {{#each items}}
+        <li>
+            <level type="{{ .type }}" name="{{ .name }}" />
+        </li>
+        {{/each}}
+    </ul>
+</div>
