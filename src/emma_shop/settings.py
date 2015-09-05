@@ -61,7 +61,7 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
-            os.path.join(BASE_DIR, '../public')
+            os.path.join(BASE_DIR, 'public')
         ],
         'APP_DIRS': True,
         'OPTIONS': {
@@ -106,13 +106,12 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.8/howto/static-files/
 
-STATIC_URL = '/static/'
+STATIC_URL = '/assets/'
 
-STATIC_ROOT = 'static'
+STATIC_ROOT = 'assets'
 
 STATICFILES_DIRS = (
-    os.path.join(BASE_DIR, 'assets'),
-    os.path.join(BASE_DIR, 'public'),
+    os.path.join(BASE_DIR, 'public', 'assets'),
 )
 
 DEFAULT_FILE_STORAGE = 'storages.backends.s3boto.S3BotoStorage'

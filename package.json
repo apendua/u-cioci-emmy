@@ -7,6 +7,7 @@
     "browserify": "^11.0.1",
     "gulp": "^3.9.0",
     "gulp-autoprefixer": "^3.0.1",
+    "gulp-bower": "0.0.10",
     "gulp-cache": "^0.3.0",
     "gulp-imagemin": "^2.3.0",
     "gulp-jshint": "^1.11.2",
@@ -15,6 +16,7 @@
     "gulp-plumber": "^1.0.1",
     "gulp-rename": "^1.2.2",
     "gulp-uglify": "^1.4.0",
+    "run-sequence": "^1.1.2",
     "stringify": "^3.1.0",
     "vinyl-source-stream": "^1.1.0"
   }
