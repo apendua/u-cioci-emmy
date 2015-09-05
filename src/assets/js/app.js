@@ -7,12 +7,14 @@ require('./components');
 var Ractive = require('ractive');
 var postal = require('postal.js');
 var _ = require('lodash');
+var shopChannel = postal.channel('shop');
 
 window.postal = postal;
 
 var ractive = new Ractive({
     el: document.getElementById('app'),
     template: require('./app.html'),
+    modifyArrays: false,
     data: {
         itemsToBuy: [
             { name: 'jabłko' },
@@ -29,22 +31,18 @@ var ractive = new Ractive({
     }
 });
 
-postal.subscribe({
-    channel: 'shop',
+shopChannel.subscribe({
     topic: 'cart.addItem',
     callback: function (data) {
-        var items = ractive.get('itemsInCart');
-        var index = _.findIndex(items, function(i) {
-            return i.name === data.name;
-        });
-        if (index >= 0) {
-            ractive.add('itemsInCart.' + index + '.count', 1);
-        } else {
-            ractive.push('itemsInCart', {
-                name: data.name,
-                count: 1
-            });
-        }
-        console.log('ITEM:', items);
+        ractive.push('itemsInCart', data);
     }
+});
+
+shopChannel.subscribe({
+    topic: 'cart.removeItem',
+    callback: function (data) {
+        // NOTE: ideally this should work, put ractive has problems with that ...
+        // ractive.splice('itemsInCart', data.index, 1);
+        ractive.set('itemsInCart.' + data.index + '.removed', true);
+    },
 });

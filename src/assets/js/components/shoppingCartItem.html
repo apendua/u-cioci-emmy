@@ -1,3 +1,5 @@
-<div>
-    {{name}}:{{count}}
+<div class="shopping_cart_item">
+    <div class="shopping_cart_item_icon {{#if removed}}shopping_cart_item_removed{{/if}}" on-click="removeItem">
+        NAME: {{name}}
+    </div>
 </div>

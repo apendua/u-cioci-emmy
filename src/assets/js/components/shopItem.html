@@ -1,3 +1,13 @@
-<div class="shopItem" on-click="addItem">
-    SHOP ITEM
+<div class="shop_item">
+    <div class="shop_item_icon" on-click="addItem">
+        <img src="{{icon}}" alt="item"/>
+    </div>
+    <div class="shop_item_title">
+        {{name}}
+    </div>
+    <div class="shop_item_price">
+        {{price}}
+    </div>
+    <div class="shop_item_sound" on-click="playSound">
+    </div>
 </div>

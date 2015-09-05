@@ -8,8 +8,11 @@ Ractive.components.shoppingCart = Ractive.extend({
             var items = this.get('items');
             var total = 0;
             _.each(items, function (item) {
-                // TODO: use item cost and count
-                total += item.count;
+                if (item.removed) {
+                    return;
+                }
+                // TODO: use item price when we have it
+                total += 1;
             });
             return total;
         }
