@@ -53,6 +53,7 @@ class GameView(APIView):
 
         serialized_shopping_list = ItemSerializer(self.items_to_buy, many=True, context=counts)
         serialized_available_items = ItemSerializer(self.items_to_sell, many=True, context=counts)
+        random.shuffle(serialized_available_items.data)
 
         return {
             'budget': budget,
