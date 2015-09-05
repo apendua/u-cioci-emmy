@@ -7,4 +7,6 @@ boto==2.38.0
 django-boto==0.3.1
 Pillow==2.9.0
 django-storages==1.1.8
-django-grappelli
+django-grappelli==2.7.1
+django-taggit==0.17.0
+django-taggit-autosuggest==0.2.7

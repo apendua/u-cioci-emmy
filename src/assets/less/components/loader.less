@@ -1,3 +1,5 @@
+@import '../config';
+
 @keyframes loader-anim {
     0% {
         border-width: 30px;
@@ -78,11 +80,11 @@
         background: rgba(255, 255, 255, 0.9);
 
         &[title]:after {
-            color: #b22756;
+            color: @primaryColor;
         }
 
         span:before {
-            border-right-color: #b22756;
+            border-right-color: @primaryColor;
         }
     }
 }

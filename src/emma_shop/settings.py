@@ -42,6 +42,8 @@ INSTALLED_APPS = (
     #3rd part modules
     'rest_framework',
     'storages',
+    'taggit',
+    'taggit_autosuggest',
 
     'shop'
 )
