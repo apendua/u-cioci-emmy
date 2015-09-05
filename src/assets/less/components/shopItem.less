@@ -33,6 +33,7 @@
 .shop_item {
     position: relative;
     padding-bottom: 38px;
+    cursor: pointer;
 }
 
 .shop_item_icon img {
@@ -118,13 +119,28 @@
 }
 
 .shop_item_title {
+    display: block;
     background-color: #8E2323;
-    padding: 10px;
+    min-height: 50px;
     color: #fff;
     text-transform: uppercase;
     font-weight: bold;
     position: absolute;
     bottom: 0;
     left: 0;
-    right: 0;
+    width: 100%;
+    box-sizing: border-box;
+
+    div {
+        display: table;
+        width: 100%;
+        min-height: 50px;
+        padding: 10px;
+        box-sizing: border-box;
+
+        span {
+            display: table-cell;
+            vertical-align: middle;
+        }
+    }
 }
