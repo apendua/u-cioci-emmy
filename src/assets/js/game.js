@@ -28,7 +28,7 @@ channel.subscribe({
         channel.publish({
             topic: 'request',
             data: {
-                type: currentDifficulty
+                difficulty: currentDifficulty
             }
         });
     },
