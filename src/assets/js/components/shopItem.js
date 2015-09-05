@@ -13,5 +13,13 @@ Ractive.components.shopItem = Ractive.extend({
                 }
             });
         });
+        this.on('playSound', function () {
+            channel.publish({
+                topic: 'playSound',
+                data: {
+                    
+                }
+            });
+        });
     }
 });

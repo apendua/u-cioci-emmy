@@ -1,6 +1,6 @@
 <div class="shoppingCart">
-    {{#each items}}
-    <shoppingCartItem></shoppingCartItem>
+    {{#each items:index}}
+    <shoppingCartItem index={{index}}></shoppingCartItem>
     {{/each}}
     <div>
         Total Cost: {{totalCost()}}
