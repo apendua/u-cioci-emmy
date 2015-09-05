@@ -1,12 +1,36 @@
 var Ractive = require('ractive'),
-    postal = require('postal.js');
+    postal = require('postal.js'),
+    AudioQueue = require('../services/audioQueue'),
+    audio = require('../config/audio');
 
+var resultScreenCongratulations = null;
 Ractive.components.resultScreen = Ractive.extend({
     template: require('./resultScreen.html'),
 
     onrender: function() {
         this.initializeSubscription();
         this.on('selectLevel', this.selectAnotherLevel.bind(this));
+        this.on('replay', this.replay.bind(this));
+
+        this.playCongratulations();
+    },
+    
+    playCongratulations: function() {
+        if (this.get('opened')) {
+            if (resultScreenCongratulations) {
+                resultScreenCongratulations.stop();
+            }
+
+            resultScreenCongratulations = AudioQueue.simpleAudio(audio.CONGRATULATIONS);
+            resultScreenCongratulations.start();
+        }
+    },
+
+    replay: function() {
+        postal.publish({
+            channel: 'game',
+            topic: 'replay'
+        });
     },
 
     selectAnotherLevel: function() {
@@ -33,6 +57,7 @@ Ractive.components.resultScreen = Ractive.extend({
             callback: function() {
                 self.set('loading', false);
                 self.set('opened', true);
+                self.playCongratulations();
             }
         });
 

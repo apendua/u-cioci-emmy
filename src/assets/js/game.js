@@ -24,7 +24,13 @@ channel.subscribe({
     topic: 'replay',
     callback: function (data) {
         console.log('replay level');
-        getGame(currentDifficulty, currentLevel);
+
+        channel.publish({
+            topic: 'request',
+            data: {
+                type: currentDifficulty
+            }
+        });
     },
 });
 
@@ -38,7 +44,7 @@ channel.subscribe({
 });
 
 function getGame (difficulty, level) {
-    
+
     // TODO: do not get again if you're currently loading data ...
     
     var xhr = new XMLHttpRequest();

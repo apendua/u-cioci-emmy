@@ -18,6 +18,7 @@ module.exports = Ractive.defaults.data.audio = {
     SHELVES: audio('polki_sklepowe.mp3'),
     ONE_PIECE: audio('raz.mp3'),
     MORE_PIECES: audio('razy.mp3'),
+    CONGRATULATIONS: audio('gratulacje.mp3'),
 
     '1': audio('1.mp3'),
     '2': audio('2.mp3'),

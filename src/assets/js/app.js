@@ -92,6 +92,10 @@ gameChannel.subscribe({
         });
         ractive.set('itemsToBuy', data.shopping_list);
         ractive.set('itemsInShop', data.available_items);
+        ractive.set('itemsInCart', []);
+        ractive.set('totalPrice', 0);
+        ractive.set('goalReached', false);
+        ractive.set('notEnoughMoney', false);
         ractive.set('budget', data.budget);
         ractive.set('scenario', data.scenario);
     }
