@@ -1,0 +1,63 @@
+- name: Update apt-get
+  apt: update_cache=yes
+  sudo: yes
+
+- name: Install basic utils
+  apt: pkg={{ item }}
+  with_items: apt_get_packages
+  sudo: yes
+
+- name: Create directory for virtualenv
+  file: path={{ virtualenv_path }} owner={{ user }} state=directory
+  sudo: yes
+
+- name: Create directory for logs
+  file: path={{ log_directory }} owner={{ user }} group={{ user }} state=directory
+  sudo: yes
+
+# node
+- name: Grabbing the node repository
+  apt_repository: repo='ppa:chris-lea/node.js' state=present update_cache=yes
+  sudo: yes
+
+- name: Install nodejs
+  apt: pkg=nodejs state=latest
+  sudo: yes
+
+- name: Install Yo, Bower, Gulp
+  npm: name={{ item }} state=present global=yes
+  with_items:
+    - yo
+    - gulp
+    - bower
+    - generator-ractive-django
+  sudo: yes
+
+- name: Make big yo
+  command: yo ractive-django
+  args:
+    chdir: "/vagrant/"
+
+# Django
+- name: Copy django settings_local.py
+  template: src=local_settings.py.j2 dest={{ project_root }}/src/{{ project_name }}/local_settings.py
+
+- name: Upgrade the virtualenv.
+  pip: requirements={{ project_root }}/src/{{ requirements }} virtualenv={{ virtualenv_path }} extra_args='--upgrade'
+  sudo: yes
+
+# MySQL
+- name: Install mysql
+  pip: name=mysql-python
+  sudo: yes
+
+- name: Run manage.py syncdb, migrate and collectstatic
+  django_manage:
+    app_path={{ project_root }}/src/
+    virtualenv={{ virtualenv_path }}
+    settings={{ project_name }}.settings
+    command={{ item }}
+  with_items:
+    - syncdb
+    - migrate
+    - collectstatic

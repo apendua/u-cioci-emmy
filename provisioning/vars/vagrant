@@ -1,0 +1,11 @@
+user: vagrant
+project_root: /vagrant
+virtualenv_path: /env/
+
+db_name: "my_13508"
+db_user: "my_13508a"
+db_password: "1234123121"
+db_host: "fornost.megiteam.pl"
+db_port: "3307"
+
+requirements: requirements.txt

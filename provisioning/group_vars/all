@@ -1,0 +1,21 @@
+requirements: requirements.txt
+project_name: emma_shop
+
+log_directory: /var/log/codepot/
+run_directory: /var/run/codepot/
+
+apt_get_packages:
+    - vim
+    - wget
+    - curl
+    - unzip
+    - mc
+    - git-core
+    - python-pip
+    - python-virtualenv
+    - python-dev
+    - libjpeg-dev
+    - zlib1g-dev
+    - nginx
+    - libmysqlclient-dev
+    - mysql-server
