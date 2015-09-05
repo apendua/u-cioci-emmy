@@ -32,6 +32,10 @@ var ractive = new Ractive({
     },
 });
 
+ractive.observe('itemsInCart', function (items) {
+    console.log('changed', arguments);
+});
+
 shopChannel.subscribe({
     topic: 'cart.addItem',
     callback: function (data) {

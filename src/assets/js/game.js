@@ -56,7 +56,7 @@ function getGame (difficulty, level) {
         console.log('ERROR');
         startGame(defaultGame);
     });
-    xhr.open("GET", "http://localhost:8000/game/" + difficulty + "/" + level + "/", true);
+    xhr.open("GET", "/game/" + difficulty + "/" + level + "/", true);
     xhr.send();
 }
 
