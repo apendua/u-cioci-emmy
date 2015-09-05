@@ -3,6 +3,7 @@ require('./dialog');
 require('./loader');
 
 // Shop
+require('./readListButton');
 require('./shopItem');
 require('./shopItemsList');
 require('./shoppingCart');
