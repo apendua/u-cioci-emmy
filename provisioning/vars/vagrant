@@ -9,8 +9,8 @@ db_host: "fornost.megiteam.pl"
 db_port: "3307"
 
 aws_url: "http://uciociemmy.s3.amazonaws.com/"
-aws_access_key: "AKIAISLF3VOCRBX7IRXQ"
-aws_secret_access_key: "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"
+aws_access_key: "AKIAJES7PPZZOUZNNJ3Q"
+aws_secret_access_key: "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"
 aws_storage_bucket_name: "uciociemmy"
 
 requirements: requirements.txt

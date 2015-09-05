@@ -9,6 +9,8 @@ var postal = require('postal.js');
 var _ = require('lodash');
 var shopChannel = postal.channel('shop');
 
+window.postal = postal;
+
 var ractive = new Ractive({
     el: document.getElementById('app'),
     template: require('./app.html'),
@@ -17,15 +19,15 @@ var ractive = new Ractive({
         itemsToBuy: [
             { name: 'jabłko' },
             { name: 'banan' },
-            { name: 'papryka' },
+            { name: 'papryka' }
         ],
         itemsInShop: [
             { name: 'jabłko' },
             { name: 'banan' },
-            { name: 'papryka' },
+            { name: 'papryka' }
         ],
         itemsInCart: [
-        ],
+        ]
     }
 });
 
