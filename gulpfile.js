@@ -8,7 +8,6 @@ var imagemin = require('gulp-imagemin'),
     cache = require('gulp-cache');
 var minifycss = require('gulp-minify-css');
 var less = require('gulp-less');
-var browserSync = require('browser-sync');
 var bowerResolve = require('bower-resolve');
 var stringify = require('stringify');
 var source = require('vinyl-source-stream');
@@ -29,18 +28,6 @@ function getBowerPackageIds() {
 
     return bowerManifest.dependencies ? Object.keys(bowerManifest.dependencies) || [] : [];
 }
-
-gulp.task('browser-sync', function() {
-    browserSync({
-        server: {
-            baseDir: "./"
-        }
-    });
-});
-
-gulp.task('bs-reload', function() {
-    browserSync.reload();
-});
 
 gulp.task('images', function() {
     gulp.src('src/assets/images/**/*')
@@ -65,10 +52,7 @@ gulp.task('styles', function() {
         .pipe(gulp.dest(DESTINATION + '/assets/css/'))
         .pipe(rename({suffix: '.min'}))
         .pipe(minifycss())
-        .pipe(gulp.dest(DESTINATION + '/assets/css/'))
-        .pipe(browserSync.reload({
-            stream: true
-        }))
+        .pipe(gulp.dest(DESTINATION + '/assets/css/'));
 });
 
 gulp.task('scripts:vendor', function() {
@@ -96,10 +80,7 @@ gulp.task('scripts:vendor', function() {
           }
       }))
       .pipe(source('vendor.js'))
-      .pipe(gulp.dest(DESTINATION + '/assets/js'))
-      .pipe(browserSync.reload({
-         stream: true
-      }));
+      .pipe(gulp.dest(DESTINATION + '/assets/js'));
 });
 
 gulp.task('scripts:app', function() {
@@ -127,10 +108,7 @@ gulp.task('scripts:app', function() {
           }
         }))
         .pipe(source('app.js'))
-        .pipe(gulp.dest(DESTINATION + '/assets/js'))
-        .pipe(browserSync.reload({
-           stream: true
-        }));
+        .pipe(gulp.dest(DESTINATION + '/assets/js'));
 });
 
 gulp.task('build:html', function() {
@@ -138,7 +116,7 @@ gulp.task('build:html', function() {
         .pipe(gulp.dest(DESTINATION));
 });
 
-gulp.task('default', ['browser-sync'], function() {
+gulp.task('default', [ 'build' ], function() {
     gulp.watch("src/index.html", ['build:html']);
     gulp.watch("src/less/**/*.less", ['styles']);
     gulp.watch("src/assets/js/**/*.js", ['scripts:app']);
