@@ -10,6 +10,7 @@
     "tests"
   ],
   "dependencies": {
+    "pure": "~0.6.0",
     "ractive": "~0.7.3"
   }
 }
