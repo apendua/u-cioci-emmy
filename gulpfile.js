@@ -15,7 +15,7 @@ var browserify = require('browserify');
 var fs = require('fs');
 
 var IS_PRODUCTION = (process.env.NODE_ENV === 'production');
-var DESTINATION = './public';
+var DESTINATION = './src/public';
 
 function getBowerPackageIds() {
     var bowerManifest = {};
