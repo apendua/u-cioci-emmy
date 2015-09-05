@@ -7,8 +7,10 @@ Ractive.components.shopItem = Ractive.extend({
     oninit: function () {
         this.on('addItem', function () {
             channel.publish({
-                topic: 'addItem',
-                data: {}
+                topic: 'cart.addItem',
+                data: {
+                    name: this.get('name')
+                }
             });
         });
     }

@@ -40,6 +40,7 @@ INSTALLED_APPS = (
 
     #3rd part modules
     'rest_framework',
+    'storages',
 
     'shop'
 )

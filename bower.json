@@ -12,7 +12,6 @@
   "dependencies": {
     "lodash": "~3.10.1",
     "postal.js": "postal#~1.0.7",
-    "pure": "~0.6.0",
     "ractive": "~0.7.3"
   }
 }
