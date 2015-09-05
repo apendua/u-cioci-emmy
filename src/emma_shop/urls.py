@@ -18,9 +18,10 @@ from django.contrib import admin
 from django.conf.urls.static import static
 from django.conf import settings
 from rest_framework import routers
+from shop import api_views
 
 router = routers.DefaultRouter()
-
+router.register(r'items', api_views.ItemViewSet)
 
 urlpatterns = [
     url(r'', include('shop.urls')),

@@ -1,13 +1,16 @@
 <div class="roof"></div>
 <div id="app">
+    <div class="panel leftPanel">
+
     <welcomeScreen opened="true" />
+    
     <div class="leftPanel">
         <shoppingList items="{{itemsToBuy}}"></shoppingList>
     </div>
-    <div class="middlePanel">
+    <div class="panel middlePanel">
         <shopItemsList items="{{itemsInShop}}"></shopItemsList>
     </div>
-    <div class="rightPanel">
+    <div class="panel rightPanel">
         <shoppingCart items="{{itemsInCart}}"></shoppingCart>
     </div>
 </div>
