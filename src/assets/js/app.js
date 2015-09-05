@@ -20,18 +20,9 @@ var ractive = new Ractive({
     template: require('./app.html'),
     modifyArrays: false,
     data: {
-        itemsToBuy: [
-            { name: 'jabłko' },
-            { name: 'banan' },
-            { name: 'papryka' }
-        ],
-        itemsInShop: [
-            { name: 'jabłko', price: 1 },
-            { name: 'banan', price: 2 },
-            { name: 'papryka', price: 3 }
-        ],
-        itemsInCart: [
-        ]
+        itemsToBuy: [],
+        itemsInShop: [],
+        itemsInCart: []
     },
     findIndexOf: function (id) {
         var items = this.get('itemsInShop');
@@ -47,8 +38,8 @@ shopChannel.subscribe({
         var index = ractive.findIndexOf(data.id);
         if (index >= 0) {
             ractive.add('itemsInShop.' + index + '.available', -1);
+            ractive.push('itemsInCart', data);
         }
-        ractive.push('itemsInCart', data);
     }
 });
 
