@@ -4,15 +4,14 @@ var _ = require('lodash');
 Ractive.components.shoppingCart = Ractive.extend({
     template: require('./shoppingCart.html'),
     data: {
-        totalCost: function () {
+        totalPrice: function () {
             var items = this.get('items');
             var total = 0;
             _.each(items, function (item) {
                 if (item.removed) {
                     return;
                 }
-                // TODO: use item price when we have it
-                total += 1;
+                total += item.price;
             });
             return total;
         }

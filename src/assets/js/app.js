@@ -22,9 +22,9 @@ var ractive = new Ractive({
             { name: 'papryka' }
         ],
         itemsInShop: [
-            { name: 'jabłko' },
-            { name: 'banan' },
-            { name: 'papryka' }
+            { name: 'jabłko', price: 1 },
+            { name: 'banan', price: 2 },
+            { name: 'papryka', price: 3 }
         ],
         itemsInCart: [
         ]

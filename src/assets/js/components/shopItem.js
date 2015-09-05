@@ -9,7 +9,8 @@ Ractive.components.shopItem = Ractive.extend({
             channel.publish({
                 topic: 'cart.addItem',
                 data: {
-                    name: this.get('name')
+                    name: this.get('name'),
+                    price: this.get('price')
                 }
             });
         });
