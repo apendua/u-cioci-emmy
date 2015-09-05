@@ -17,15 +17,15 @@ var ractive = new Ractive({
         itemsToBuy: [
             { name: 'jabłko' },
             { name: 'banan' },
-            { name: 'papryka' },
+            { name: 'papryka' }
         ],
         itemsInShop: [
             { name: 'jabłko' },
             { name: 'banan' },
-            { name: 'papryka' },
+            { name: 'papryka' }
         ],
         itemsInCart: [
-        ],
+        ]
     }
 });
 
@@ -34,7 +34,7 @@ postal.subscribe({
     topic: 'cart.addItem',
     callback: function (data) {
         var items = ractive.get('itemsInCart');
-        var index = _.findIndex(items, function (i) {
+        var index = _.findIndex(items, function(i) {
             return i.name === data.name;
         });
         if (index >= 0) {
@@ -42,7 +42,7 @@ postal.subscribe({
         } else {
             ractive.push('itemsInCart', {
                 name: data.name,
-                count: 1,
+                count: 1
             });
         }
         console.log('ITEM:', items);

@@ -10,6 +10,7 @@ Ractive.components.welcomeScreen = Ractive.extend({
 
     initializeSubscription: function() {
         var self = this;
+
         postal.subscribe({
             channel: 'game',
             topic: 'welcome',
@@ -20,8 +21,17 @@ Ractive.components.welcomeScreen = Ractive.extend({
 
         postal.subscribe({
             channel: 'game',
+            topic: 'request',
+            callback: function() {
+                self.set('loading', true);
+            }
+        });
+
+        postal.subscribe({
+            channel: 'game',
             topic: 'start',
             callback: function() {
+                self.set('loading', false);
                 self.set('opened', false);
             }
         });

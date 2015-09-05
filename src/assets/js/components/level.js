@@ -15,11 +15,21 @@ Ractive.components.level = Ractive.extend({
 
             postal.publish({
                 channel: 'game',
-                topic: 'start',
+                topic: 'request',
                 data: {
                     level: self.get('type')
                 }
             });
+
+            setTimeout(function() {
+                postal.publish({
+                    channel: 'game',
+                    topic: 'start',
+                    data: {
+                        level: self.get('type')
+                    }
+                });
+            }, 3000);
         });
     }
 });

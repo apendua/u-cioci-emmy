@@ -1,5 +1,6 @@
 // Generic components
 require('./dialog');
+require('./loader');
 
 // Shop
 require('./shopItem');
