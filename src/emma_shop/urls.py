@@ -23,6 +23,7 @@ router = routers.DefaultRouter()
 
 
 urlpatterns = [
+    url(r'', include('shop.urls')),
     url(r'^api/', include(router.urls)),
     url(r'^admin/', include(admin.site.urls)),
     url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework'))
