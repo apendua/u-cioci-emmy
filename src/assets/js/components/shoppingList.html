@@ -1,11 +1,11 @@
 <div class="shopping_list">
 
-    <button class="toggle_list"></button>
+    <button class="toggle_list" on-click="toggleList"></button>
 
     <readListButton items="{{itemsToBuy}}"/>
 
     {{#each itemsToBuy}}
-    <shoppingListItem></shoppingListItem>
+    <shoppingListItem text="{{ text }}"></shoppingListItem>
     {{/each}}
 
     <div class="shopping_list_budget">
