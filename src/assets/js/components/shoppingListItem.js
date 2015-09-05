@@ -5,7 +5,6 @@ Ractive.components.shoppingListItem = Ractive.extend({
     template: require('./shoppingListItem.html'),
     data: {
         icons: function (count) {
-            console.log(count, _.range(count));
             return _.range(count);
         },
     }

@@ -1,9 +1,9 @@
-<div class="shop_item">
+<div class="shop_item {{#if available <= 0}}shop_item_out_of_stock{{/if}}">
     <div class="shop_item_icon" on-click="addItem">
         <img src="{{photo}}" alt="item"/>
     </div>
     <div class="shop_item_title">
-        {{name}}
+        {{name}}, available: {{available}}
     </div>
     <div class="shop_item_price">
         {{price}}
