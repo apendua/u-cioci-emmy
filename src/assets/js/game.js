@@ -1,7 +1,7 @@
 var postal = require('postal.js');
 var defaultGame = require('./game.json');
 var channel = postal.channel('game');
-var currentLevel = 1;
+var currentLevel = 3;
 var currentDifficulty = 'easy';
 var currentGame = {};
 
