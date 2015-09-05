@@ -1,0 +1,63 @@
+{
+    "shopping_list": [
+        {
+            "id": 2,
+            "name": "jabłko",
+            "icon": "http://uciociemmy.s3.amazonaws.com/images/icons/jablko.png",
+            "photo": "http://uciociemmy.s3.amazonaws.com/images/photos/apple.jpg",
+            "audio": "http://uciociemmy.s3.amazonaws.com/audio/jablko.mp3",
+            "price": 1,
+            "count": 1,
+            "tag_list": []
+        }
+    ],
+    "budget": 2,
+    "scenario": null,
+    "available_items": [
+        {
+            "id": 2,
+            "name": "jabłko",
+            "icon": "http://uciociemmy.s3.amazonaws.com/images/icons/jablko.png",
+            "photo": "http://uciociemmy.s3.amazonaws.com/images/photos/apple.jpg",
+            "audio": "http://uciociemmy.s3.amazonaws.com/audio/jablko.mp3",
+            "price": 1,
+            "count": 1,
+            "tag_list": []
+        },
+        {
+            "id": 5,
+            "name": "ciastka",
+            "icon": "http://uciociemmy.s3.amazonaws.com/images/icons/ciastka.png",
+            "photo": "http://uciociemmy.s3.amazonaws.com/images/photos/cookies.jpg",
+            "audio": "http://uciociemmy.s3.amazonaws.com/audio/ciastka.mp3",
+            "price": 3,
+            "count": 0,
+            "tag_list": []
+        },
+        {
+            "id": 4,
+            "name": "woda",
+            "icon": "http://uciociemmy.s3.amazonaws.com/images/icons/woda.png",
+            "photo": "http://uciociemmy.s3.amazonaws.com/images/photos/water.jpg",
+            "audio": "http://uciociemmy.s3.amazonaws.com/audio/woda.mp3",
+            "price": 2,
+            "count": 0,
+            "tag_list": [
+                "napoje"
+            ]
+        },
+        {
+            "id": 6,
+            "name": "Banan",
+            "icon": "http://uciociemmy.s3.amazonaws.com/images/icons/banany.png",
+            "photo": "http://uciociemmy.s3.amazonaws.com/images/photos/banana.jpg",
+            "audio": "http://uciociemmy.s3.amazonaws.com/audio/banan.mp3",
+            "price": 2,
+            "count": 0,
+            "tag_list": [
+                "owoce",
+                "śniadanie"
+            ]
+        }
+    ]
+}

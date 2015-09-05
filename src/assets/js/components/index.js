@@ -9,6 +9,7 @@ require('./shoppingCart');
 require('./shoppingCartItem');
 require('./shoppingList');
 require('./shoppingListItem');
+require('./checkoutButton');
 
 // General
 require('./welcomeScreen');

@@ -131,8 +131,37 @@ GAME_CONFIG = {
         'number_of_extra': 3,
         'number_to_buy': 2,
     },
+    ('easy', '3'): {
+        'number_of_extra': 4,
+        'number_to_buy': 2,
+    },
+    ('medium', '1'): {
+        'number_of_extra': 5,
+        'number_to_buy': 3,
+    },
+    ('medium', '2'): {
+        'number_of_extra': 6,
+        'number_to_buy': 3,
+    },
+    ('medium', '3'): {
+        'number_of_extra': 7,
+        'number_to_buy': 4,
+    },
+    ('hard', '1'): {
+        'number_of_extra': 8,
+        'number_to_buy': 4,
+    },
+    ('hard', '2'): {
+        'number_of_extra': 8,
+        'number_to_buy': 5,
+    },
+    ('hard', '3'): {
+        'number_of_extra': 10,
+        'number_to_buy': 5,
+    },
 }
 
+ITEMS_COUNT_LIMIT = 5
 
 try:
     from local_settings import *
