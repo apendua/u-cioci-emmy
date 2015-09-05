@@ -7,7 +7,7 @@ Ractive.components.shopItem = Ractive.extend({
     oninit: function () {
         this.on('addItem', function () {
             channel.publish({
-                topic: 'addItem',
+                topic: 'cart.addItem',
                 data: {
                     name: this.get('name')
                 }
