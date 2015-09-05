@@ -118,7 +118,7 @@ gulp.task('build:html', function() {
 
 gulp.task('default', [ 'build' ], function() {
     gulp.watch("src/index.html", ['build:html']);
-    gulp.watch("src/less/**/*.less", ['styles']);
+    gulp.watch("src/assets/less/**/*.less", ['styles']);
     gulp.watch("src/assets/js/**/*.js", ['scripts:app']);
     gulp.watch("src/assets/js/**/*.html", ['scripts:app']);
     gulp.watch("bower.json", ['scripts:vendor']);
