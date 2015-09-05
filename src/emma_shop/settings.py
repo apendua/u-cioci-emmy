@@ -131,6 +131,34 @@ GAME_CONFIG = {
         'number_of_extra': 3,
         'number_to_buy': 2,
     },
+    ('easy', '3'): {
+        'number_of_extra': 3,
+        'number_to_buy': 2,
+    },
+    ('medium', '1'): {
+        'number_of_extra': 3,
+        'number_to_buy': 2,
+    },
+    ('medium', '2'): {
+        'number_of_extra': 3,
+        'number_to_buy': 2,
+    },
+    ('medium', '3'): {
+        'number_of_extra': 3,
+        'number_to_buy': 2,
+    },
+    ('hard', '1'): {
+        'number_of_extra': 3,
+        'number_to_buy': 2,
+    },
+    ('hard', '2'): {
+        'number_of_extra': 3,
+        'number_to_buy': 2,
+    },
+    ('hard', '3'): {
+        'number_of_extra': 3,
+        'number_to_buy': 2,
+    },
 }
 
 
