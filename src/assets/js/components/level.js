@@ -15,7 +15,7 @@ Ractive.components.level = Ractive.extend({
 
             postal.publish({
                 channel: 'game',
-                topic: 'setup',
+                topic: 'request',
                 data: {
                     difficulty: self.get('type')
                 }

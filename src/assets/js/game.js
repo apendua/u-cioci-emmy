@@ -6,7 +6,7 @@ var currentDifficulty = 'easy';
 var currentGame = {};
 
 channel.subscribe({
-    topic: 'setup',
+    topic: 'request',
     callback: function (data) {
         console.log('setting game params', data);
         if (data.difficulty) {
