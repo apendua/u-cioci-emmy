@@ -17,7 +17,7 @@
 
 # node
 - name: Grabbing the node repository
-  apt_repository: repo='ppa:chris-lea/node.js' state=present update_cache=yes
+  apt_repository: repo='ppa:rwky/nodejs' state=present update_cache=yes
   sudo: yes
 
 - name: Install nodejs
