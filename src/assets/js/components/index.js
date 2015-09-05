@@ -14,6 +14,7 @@ require('./shoppingListItemWord');
 require('./checkoutButton');
 
 // General
+require('./resultScreen');
 require('./welcomeScreen');
 require('./level');
 require('./levelsList');
