@@ -120,6 +120,7 @@ gulp.task('default', [ 'build' ], function() {
     gulp.watch("src/index.html", ['build:html']);
     gulp.watch("src/less/**/*.less", ['styles']);
     gulp.watch("src/assets/js/**/*.js", ['scripts:app']);
+    gulp.watch("src/assets/js/**/*.html", ['scripts:app']);
     gulp.watch("bower.json", ['scripts:vendor']);
     gulp.watch("src/assets/js/vendor.js", ['scripts:vendor']);
     gulp.watch("*.html", ['bs-reload']);
