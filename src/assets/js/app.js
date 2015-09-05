@@ -9,13 +9,27 @@ var postal = require('postal.js');
 
 var ractive = new Ractive({
     el: document.getElementById('app'),
-    template: require('./app.html')
+    template: require('./app.html'),
+    data: {
+        itemsToBuy: [
+            { name: 'jabłko' },
+            { name: 'banan' },
+            { name: 'papryka' },
+        ],
+        itemsInShop: [
+            { name: 'jabłko' },
+            { name: 'banan' },
+            { name: 'papryka' },
+        ],
+        itemsInCart: [
+        ],
+    }
 });
 
 postal.subscribe({
     channel: 'shop',
     topic: 'addItem',
-    callback: function () {
-        console.log('item added');
+    callback: function (data) {
+        ractive.push('itemsInCart', data);
     }
 });
