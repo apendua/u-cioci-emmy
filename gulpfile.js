@@ -14,6 +14,7 @@ var source = require('vinyl-source-stream');
 var browserify = require('browserify');
 var fs = require('fs');
 var bower = require('gulp-bower');
+var runSequence = require('run-sequence');
 
 var IS_PRODUCTION = (process.env.NODE_ENV === 'production');
 var DESTINATION = './src/public';
@@ -54,6 +55,10 @@ gulp.task('styles', function() {
         .pipe(rename({suffix: '.min'}))
         .pipe(minifycss())
         .pipe(gulp.dest(DESTINATION + '/assets/css/'));
+});
+
+gulp.task('build:all', function() {
+    return runSequence('bower', 'scripts:vendor', 'scripts:app', 'styles');
 });
 
 gulp.task('scripts:vendor', function() {
@@ -117,19 +122,19 @@ gulp.task('build:html', function() {
         .pipe(gulp.dest(DESTINATION));
 });
 
-gulp.task('bower', function() {
+gulp.task('bower', function(cb) {
   return bower()
-    .pipe(gulp.dest('./'));
+    .pipe(gulp.dest('./src/vendor'));
 });
 
 gulp.task('default', [ 'build' ], function() {
     gulp.watch("src/index.html", ['build:html']);
     gulp.watch("src/assets/less/**/*.less", ['styles']);
+    gulp.watch("src/assets/images/**/*", ['images']);
     gulp.watch("src/assets/js/**/*.js", ['scripts:app']);
     gulp.watch("src/assets/js/**/*.html", ['scripts:app']);
-    gulp.watch("bower.json", [ 'bower', 'scripts:vendor' ]);
+    gulp.watch("bower.json", [ 'scripts:vendor' ]);
     gulp.watch("src/assets/js/vendor.js", ['scripts:vendor']);
-    gulp.watch("*.html", ['bs-reload']);
 });
 
-gulp.task('build', [ 'bower', 'scripts:vendor', 'scripts:app', 'styles', 'images', 'build:html' ]);
+gulp.task('build', [ 'build:all', 'images', 'build:html' ]);
