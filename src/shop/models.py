@@ -1,4 +1,5 @@
 from django.db import models
+from taggit_autosuggest.managers import TaggableManager
 
 
 class Item(models.Model):
@@ -8,6 +9,7 @@ class Item(models.Model):
     audio = models.FileField(upload_to='audio')
     price = models.PositiveIntegerField()
     likely_to_draw = models.PositiveIntegerField()
+    tags = TaggableManager()
 
     def get_icon_img(self):
         if self.icon:

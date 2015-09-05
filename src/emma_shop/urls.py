@@ -28,5 +28,6 @@ urlpatterns = [
     url(r'^api/', include(router.urls)),
     url(r'^grappelli/', include('grappelli.urls')),
     url(r'^admin/', include(admin.site.urls)),
+    url(r'^taggit_autosuggest/', include('taggit_autosuggest.urls')),
     url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework'))
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
