@@ -63,7 +63,7 @@ gulp.task('scripts:vendor', function() {
     getBowerPackageIds().forEach(function(id) {
         var pkg = bowerResolve.fastReadSync(id);
 
-        if (fs.existsSync(pkg)) {
+        if (fs.existsSync(pkg) && pkg.substr(pkg.length - 3) === '.js') {
             // Otherwise it may be just CSS
             b.require(pkg, {
                 expose: id
@@ -91,7 +91,7 @@ gulp.task('scripts:app', function() {
     getBowerPackageIds().forEach(function(id) {
         var pkg = bowerResolve.fastReadSync(id);
 
-        if (fs.existsSync(pkg)) {
+        if (fs.existsSync(pkg) && pkg.substr(pkg.length - 3) === '.js') {
             // Otherwise it may be just CSS
             b.external(id);
         }
