@@ -33,7 +33,27 @@ var ractive = new Ractive({
 });
 
 ractive.observe('itemsInCart', function (items) {
-    console.log('changed', arguments);
+
+    var itemsCount = {};
+    var totalPrice = 0;
+    var goalReached = false;
+
+    _.each(items, function (i) {
+        totalPrice += i.price;
+        if (!itemsCount[i.id]) {
+            itemsCount[i.id] = 1;
+        } else {
+            itemsCount[i.id] += 1;
+        }
+    });
+
+    goalReached = _.all(this.get('itemsToBuy'), function (i) {
+        return i.count <= itemsCount[i.id];
+    });
+
+    this.set('totalPrice', totalPrice);
+    this.set('goalReached', goalReached);
+    this.set('notEnoughMoney', totalPrice >= this.get('budget'));
 });
 
 shopChannel.subscribe({
