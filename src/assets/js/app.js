@@ -11,3 +11,11 @@ var ractive = new Ractive({
     el: document.getElementById('app'),
     template: require('./app.html')
 });
+
+postal.subscribe({
+    channel: 'shop',
+    topic: 'addItem',
+    callback: function () {
+        console.log('item added');
+    }
+});
