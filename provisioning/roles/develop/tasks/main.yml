@@ -33,11 +33,6 @@
     - generator-ractive-django
   sudo: yes
 
-- name: Make big yo
-  command: yo ractive-django
-  args:
-    chdir: "/vagrant/"
-
 # Django
 - name: Copy django settings_local.py
   template: src=local_settings.py.j2 dest={{ project_root }}/src/{{ project_name }}/local_settings.py
