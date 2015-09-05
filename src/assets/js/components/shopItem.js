@@ -16,7 +16,8 @@ Ractive.components.shopItem = Ractive.extend({
                     name: this.get('name'),
                     price: this.get('price'),
                     id: this.get('id'),
-                    photo: this.get('photo')
+                    photo: this.get('photo'),
+                    icon: this.get('icon')
                 }
             });
         });
