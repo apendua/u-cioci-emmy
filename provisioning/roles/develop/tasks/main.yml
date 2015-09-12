@@ -24,13 +24,11 @@
   apt: pkg=nodejs state=latest
   sudo: yes
 
-- name: Install Yo, Bower, Gulp
+- name: Install Bower, Gulp
   npm: name={{ item }} state=present global=yes
   with_items:
-    - yo
     - gulp
     - bower
-    - generator-ractive-django
   sudo: yes
 
 # Django
