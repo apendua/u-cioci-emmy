@@ -1,0 +1,13 @@
+<div class="shop_item {{#if available <= 0}}shop_item_out_of_stock{{/if}}">
+    <div class="shop_item_icon" on-click="addItem" style="background-image:url({{photo}})">
+    </div>
+    <div class="shop_item_title">
+        <div><span>{{name}}</span></div>
+    </div>
+    <div class="shop_item_price">
+        {{price}},-
+        <span></span>
+    </div>
+    <div class="shop_item_sound" on-click="playSound">
+    </div>
+</div>

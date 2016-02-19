@@ -1,0 +1,10 @@
+<div class="shoppingCart">
+
+    <div class="basket_icon">
+        <img src="/assets/images/cart.png">
+    </div>
+
+    {{#each itemsInCart:index}}
+        <shoppingCartItem index={{index}}></shoppingCartItem>
+    {{/each}}
+</div>

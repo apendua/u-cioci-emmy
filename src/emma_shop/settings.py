@@ -31,12 +31,19 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = (
+    'grappelli',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    #3rd part modules
+    'rest_framework',
+    'storages',
+    'taggit',
+    'taggit_autosuggest',
 
     'shop'
 )
@@ -58,11 +65,12 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
-            os.path.join(BASE_DIR, 'templates')
+            os.path.join(BASE_DIR, 'public')
         ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
+                "django.core.context_processors.request",
                 'django.template.context_processors.debug',
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
@@ -103,14 +111,57 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.8/howto/static-files/
 
-STATIC_URL = '/static/'
+STATIC_URL = '/assets/'
 
-STATIC_ROOT = 'static'
+STATIC_ROOT = 'assets'
 
 STATICFILES_DIRS = (
-    os.path.join(BASE_DIR, 'assets'),
-    os.path.join(BASE_DIR, 'public'),
+    os.path.join(BASE_DIR, 'public', 'assets'),
 )
+
+DEFAULT_FILE_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
+
+
+GAME_CONFIG = {
+    ('easy', '1'): {
+        'number_of_extra': 3,
+        'number_to_buy': 1,
+    },
+    ('easy', '2'): {
+        'number_of_extra': 3,
+        'number_to_buy': 2,
+    },
+    ('easy', '3'): {
+        'number_of_extra': 4,
+        'number_to_buy': 2,
+    },
+    ('medium', '1'): {
+        'number_of_extra': 5,
+        'number_to_buy': 3,
+    },
+    ('medium', '2'): {
+        'number_of_extra': 6,
+        'number_to_buy': 3,
+    },
+    ('medium', '3'): {
+        'number_of_extra': 7,
+        'number_to_buy': 4,
+    },
+    ('hard', '1'): {
+        'number_of_extra': 8,
+        'number_to_buy': 4,
+    },
+    ('hard', '2'): {
+        'number_of_extra': 8,
+        'number_to_buy': 5,
+    },
+    ('hard', '3'): {
+        'number_of_extra': 10,
+        'number_to_buy': 5,
+    },
+}
+
+ITEMS_COUNT_LIMIT = 5
 
 try:
     from local_settings import *

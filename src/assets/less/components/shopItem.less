@@ -1,0 +1,151 @@
+.shopItem {
+    width: 100%;
+    min-height: 200px;
+    border-radius: 6px;
+    border: 1px solid #d6d6d6;
+    background: #fff;
+    text-align: center;
+    cursor: pointer;
+}
+
+.shopping_list {
+    padding: 60px 10px 10px;
+    line-height: 34px;
+    border-right: 2px solid #2B2516;
+    height: 100%;
+    position: relative;
+    background-color: #FFEFCA;
+
+    /*temporary*/
+    width: 150px;
+    position: fixed;
+    /*end tamp*/
+}
+
+.shop_item_out_of_stock {
+    opacity: 0.3;
+}
+
+.shop_list_frame {
+    padding-top: 50px;
+}
+
+.shop_item {
+    position: relative;
+    padding-bottom: 38px;
+    cursor: pointer;
+}
+
+.shop_item_icon img {
+    max-width: 100%;
+}
+
+.shop_item_frame {
+    width: 22%;
+    display: inline-block;
+    border: 1px solid #d6d6d6;
+    box-sizing: border-box;
+    text-align: center;
+    margin: 1% 1% 1% 0;
+
+    .shop_item_icon {
+        box-sizing: border-box;
+        padding-top: 90%;
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center;
+
+        img {
+            max-height: 100%;
+        }
+    }
+}
+
+.shop_item_price {
+    position: absolute;
+    height: 60px;
+    min-width: 100px;
+    color: #fff;
+    top: -10px;
+    border-radius: 0;
+    line-height: 60px;
+    font-size: 30px;
+    background-color: #E43F3F;
+    right: -10px;
+    overflow: hidden;
+    transform: rotate(0) scale(0.8);
+    transform-origin: 95% 5%;
+
+    &:before, &:after {
+        content: '';
+        display: block;
+        width: 20px;
+        height: 20px;
+        background: #fff;
+        border-radius: 50%;
+        position: absolute;
+        left: -10px;
+        top: -10px;
+    }
+
+    &:before {
+        box-shadow: 0 0 20px 50px rgba(191, 44, 44, 0.4);
+        z-index: -1;
+    }
+
+    &:after {
+        left: auto;
+        right: -10px;
+    }
+
+    span {
+        &:before, &:after {
+            content: '';
+            display: block;
+            width: 20px;
+            height: 20px;
+            background: #fff;
+            border-radius: 50%;
+            position: absolute;
+            left: -10px;
+            bottom: -10px;
+        }
+
+        &:after {
+            left: auto;
+            right: -10px;
+        }
+    }
+}
+
+.shop_item_title {
+    display: block;
+    background-color: #8E2323;
+    min-height: 18px;
+    color: #fff;
+    text-transform: uppercase;
+    font-weight: bold;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    box-sizing: border-box;
+
+    div {
+        display: table;
+        width: 100%;
+        min-height: 56px;
+        padding: 10px;
+        box-sizing: border-box;
+
+        span {
+            display: table-cell;
+            vertical-align: middle;
+        }
+    }
+}
+
+h4.shopping_list_item_title {
+    margin: 2px 0;
+}
+

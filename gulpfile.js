@@ -8,15 +8,16 @@ var imagemin = require('gulp-imagemin'),
     cache = require('gulp-cache');
 var minifycss = require('gulp-minify-css');
 var less = require('gulp-less');
-var browserSync = require('browser-sync');
 var bowerResolve = require('bower-resolve');
 var stringify = require('stringify');
 var source = require('vinyl-source-stream');
 var browserify = require('browserify');
 var fs = require('fs');
+var bower = require('gulp-bower');
+var runSequence = require('run-sequence');
 
 var IS_PRODUCTION = (process.env.NODE_ENV === 'production');
-var DESTINATION = './public';
+var DESTINATION = './src/public';
 
 function getBowerPackageIds() {
     var bowerManifest = {};
@@ -29,18 +30,6 @@ function getBowerPackageIds() {
 
     return bowerManifest.dependencies ? Object.keys(bowerManifest.dependencies) || [] : [];
 }
-
-gulp.task('browser-sync', function() {
-    browserSync({
-        server: {
-            baseDir: "./"
-        }
-    });
-});
-
-gulp.task('bs-reload', function() {
-    browserSync.reload();
-});
 
 gulp.task('images', function() {
     gulp.src('src/assets/images/**/*')
@@ -65,10 +54,11 @@ gulp.task('styles', function() {
         .pipe(gulp.dest(DESTINATION + '/assets/css/'))
         .pipe(rename({suffix: '.min'}))
         .pipe(minifycss())
-        .pipe(gulp.dest(DESTINATION + '/assets/css/'))
-        .pipe(browserSync.reload({
-            stream: true
-        }))
+        .pipe(gulp.dest(DESTINATION + '/assets/css/'));
+});
+
+gulp.task('build:all', function() {
+    return runSequence('bower', 'scripts:vendor', 'scripts:app', 'styles');
 });
 
 gulp.task('scripts:vendor', function() {
@@ -79,7 +69,7 @@ gulp.task('scripts:vendor', function() {
     getBowerPackageIds().forEach(function(id) {
         var pkg = bowerResolve.fastReadSync(id);
 
-        if (fs.existsSync(pkg)) {
+        if (fs.existsSync(pkg) && pkg.substr(pkg.length - 3) === '.js') {
             // Otherwise it may be just CSS
             b.require(pkg, {
                 expose: id
@@ -96,10 +86,7 @@ gulp.task('scripts:vendor', function() {
           }
       }))
       .pipe(source('vendor.js'))
-      .pipe(gulp.dest(DESTINATION + '/assets/js'))
-      .pipe(browserSync.reload({
-         stream: true
-      }));
+      .pipe(gulp.dest(DESTINATION + '/assets/js'));
 });
 
 gulp.task('scripts:app', function() {
@@ -110,7 +97,7 @@ gulp.task('scripts:app', function() {
     getBowerPackageIds().forEach(function(id) {
         var pkg = bowerResolve.fastReadSync(id);
 
-        if (fs.existsSync(pkg)) {
+        if (fs.existsSync(pkg) && pkg.substr(pkg.length - 3) === '.js') {
             // Otherwise it may be just CSS
             b.external(id);
         }
@@ -127,10 +114,7 @@ gulp.task('scripts:app', function() {
           }
         }))
         .pipe(source('app.js'))
-        .pipe(gulp.dest(DESTINATION + '/assets/js'))
-        .pipe(browserSync.reload({
-           stream: true
-        }));
+        .pipe(gulp.dest(DESTINATION + '/assets/js'));
 });
 
 gulp.task('build:html', function() {
@@ -138,13 +122,19 @@ gulp.task('build:html', function() {
         .pipe(gulp.dest(DESTINATION));
 });
 
-gulp.task('default', ['browser-sync'], function() {
-    gulp.watch("src/index.html", ['build:html']);
-    gulp.watch("src/less/**/*.less", ['styles']);
-    gulp.watch("src/assets/js/**/*.js", ['scripts:app']);
-    gulp.watch("bower.json", ['scripts:vendor']);
-    gulp.watch("src/assets/js/vendor.js", ['scripts:vendor']);
-    gulp.watch("*.html", ['bs-reload']);
+gulp.task('bower', function(cb) {
+  return bower()
+    .pipe(gulp.dest('./src/vendor'));
 });
 
-gulp.task('build', [ 'scripts:vendor', 'scripts:app', 'styles', 'images', 'build:html' ]);
+gulp.task('default', [ 'build' ], function() {
+    gulp.watch("src/index.html", ['build:html']);
+    gulp.watch("src/assets/less/**/*.less", ['styles']);
+    gulp.watch("src/assets/images/**/*", ['images']);
+    gulp.watch("src/assets/js/**/*.js", ['scripts:app']);
+    gulp.watch("src/assets/js/**/*.html", ['scripts:app']);
+    gulp.watch("bower.json", [ 'scripts:vendor' ]);
+    gulp.watch("src/assets/js/vendor.js", ['scripts:vendor']);
+});
+
+gulp.task('build', [ 'build:all', 'images', 'build:html' ]);

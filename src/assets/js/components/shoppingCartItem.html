@@ -1,0 +1,9 @@
+<div class="shopping_cart_item {{#if removed}}shopping_cart_item_removed{{/if}}">
+    <div
+        class="shopping_cart_item_icon"
+        on-click="removeItem"
+        data-audio="{{ audio.REMOVE_FROM_CART }}">
+        
+        <img src="{{icon}}"/>
+    </div>
+</div>

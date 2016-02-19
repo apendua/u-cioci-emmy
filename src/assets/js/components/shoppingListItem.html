@@ -1,0 +1,15 @@
+<div class="shopping_list_item">
+    <div class="shopping_list_item_icons">
+        {{#if text }}
+        <p>{{count}}x {{name}}</p>
+        {{/if}}
+        {{#if !text }}
+        {{#each icons(count)}}
+        <img src="{{icon}}"/>
+        {{/each}}
+        {{/if}}
+
+    </div>
+    <div class="shopping_list_item_sound">
+    </div>
+</div>

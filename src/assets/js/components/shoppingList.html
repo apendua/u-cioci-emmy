@@ -1,0 +1,14 @@
+<div class="shopping_list">
+
+    <button class="toggle_list" on-click="toggleList"></button>
+
+    <readListButton items="{{itemsToBuy}}"/>
+
+    {{#each itemsToBuy}}
+    <shoppingListItem text="{{ text }}"></shoppingListItem>
+    {{/each}}
+
+    <div class="shopping_list_budget">
+        {{budget}}
+    </div>
+</div>
